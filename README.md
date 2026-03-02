@@ -39,3 +39,9 @@ pnpm build
 
 - Node.js `^20.19.0` or `>=22.12.0`
 - pnpm
+
+
+<img width="1907" height="894" alt="image" src="https://github.com/user-attachments/assets/4457adc6-fe5d-463c-9b46-df44ec50245b" />
+<img width="1917" height="902" alt="image" src="https://github.com/user-attachments/assets/5fb86ac3-31a3-4dc3-adb5-494ed00470ea" />
+
+
