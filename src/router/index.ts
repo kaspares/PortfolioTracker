@@ -1,42 +1,39 @@
 import Dashboard from '@/views/dashboard.vue'
-import Portfolio from '@/views/portfolio.vue'
 import Settings from '@/views/settings.vue'
 import Signals from '@/views/signals.vue'
 import Notifications from '@/views/notifications.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import Auth from '@/views/auth.vue'
+import PortfolioListView from '@/views/portfolioListView.vue'
+import PortfolioItems from '@/views/portfolioItems.vue'
+import PortfolioLayout from '@/components/layout/PortfolioLayout.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      redirect: '/portfolios',
     },
     {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: Dashboard,
+      path: '/auth',
+      component: Auth
     },
     {
-      path: '/portfolio',
-      name: 'portfolio',
-      component: Portfolio,
+      path: '/portfolios',
+      component: PortfolioListView
     },
     {
-      path: '/signals',
-      name: 'signals',
-      component: Signals,
+      path: '/portfolio/:portfolioId',
+      component: PortfolioLayout,
+      children: [
+        { path: 'dashboard', component: Dashboard},
+        { path: 'items', component: PortfolioItems},
+        { path: 'signals', component: Signals},
+        { path: 'notifications', component: Notifications},
+        { path: 'settings', component: Settings},
+      ]
     },
-    {
-      path: '/notifications',
-      name: 'notifications',
-      component: Notifications,
-    },
-    {
-      path: '/settings',
-      name: 'settings',
-      component: Settings,
-    }
   ],
 })
 
