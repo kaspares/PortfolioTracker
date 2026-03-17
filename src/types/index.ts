@@ -11,23 +11,43 @@ export type Stock = {
 
 export type SignalAction = 'BUY' | 'SELL'
 
-export type PerfomanceItem = {
-    ticker: string
-    name: string,
-    price: number,
-    changePercent: number
-}
-
 export type MoverType = 'Gainers' | 'Losers'
 
-export type PortfolioInstrument = {
+export type InstrumentType = 'Stock' | 'Crypto' | 'Etf'
+
+export interface PortfolioSummary {
     id: string
-  ticker: string
-  name: string
-  type: InstrumentType
-  quantity: number
-  avgBuy: number
-  currentPrice: number
+    name: string
+    description: string
+    itemCount: number
+    CreatedAt: string
 }
 
-export type InstrumentType = 'Stock' | 'Crypto' | 'Etf'
+export interface Portfolio {
+    id: string
+    name: string
+    description: string
+    createdAt: number
+    items: PortfolioItem[]
+    totalValue: number
+    totalProfitLoss: number
+    totalProfitLossPercent: number
+}
+
+export interface PortfolioItem {
+    id: string
+  ticker: string
+  quantity: number
+  purchasePrice: number
+  purchaseDate: string
+  comments: ItemComment[]
+  currentPrice: number | null
+  marketValue: number | null
+  profitLoss: number | null
+  profitLossPercent: number | null
+}
+
+export interface ItemComment {
+  id: string
+  content: string
+}
