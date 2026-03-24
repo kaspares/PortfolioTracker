@@ -4,16 +4,18 @@ import Signals from '@/views/signals.vue'
 import Notifications from '@/views/notifications.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import Auth from '@/views/auth.vue'
+import Landing from '@/views/landing.vue'
 import PortfolioListView from '@/views/portfolioListView.vue'
 import PortfolioItems from '@/views/portfolioItems.vue'
 import PortfolioLayout from '@/components/layout/PortfolioLayout.vue'
+import StockDetail from '@/views/stockDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      redirect: '/portfolios',
+      component: Landing,
     },
     {
       path: '/auth',
@@ -32,9 +34,14 @@ const router = createRouter({
         { path: 'signals', component: Signals},
         { path: 'notifications', component: Notifications},
         { path: 'settings', component: Settings},
+        { path: 'stock/:ticker', component: StockDetail},
       ]
     },
   ],
+  scrollBehavior(to) {
+    if (to.hash) return { el: to.hash, behavior: 'smooth' }
+    return { top: 0 }
+  },
 })
 
 export default router

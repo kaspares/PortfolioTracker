@@ -51,3 +51,21 @@ export interface ItemComment {
   id: string
   content: string
 }
+
+export interface PerfomanceItem {
+    ticker: string
+    name: string
+    price: number
+    changePercent: number
+}
+
+export interface ChartDataPoint {
+  date: string
+  value: number
+}
+
+export interface ChartSeries {
+  label: string
+  points: ChartDataPoint[]
+  color?: string
+}
